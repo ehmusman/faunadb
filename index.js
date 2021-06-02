@@ -52,15 +52,25 @@ require("dotenv").config();
 
 
             // retreive a single document by Ref
-            // q.Get(q.Ref(q.Collection('messages'), '300311228350202373'))
+            // q.Get(q.Ref(q.Collection('messages'), '300310855113769473'))
 
 
             // retreive document by indexes
-            q.Get(
-                q.Match(q.Index('detail_by_title'), "this is message 4")
+            // q.Get(
+            //     q.Match(q.Index('detail_by_title'), "this is message 4")
+            // )
+
+            // update a document
+            // q.Update(
+            //     q.Ref(q.Collection('messages'), '300310855113769473'),
+            //     { data: { detail: "i am fine" } },
+            // )
+
+            // Replace a document
+            q.Replace(
+                q.Ref(q.Collection('messages'), '300310855113769473'),
+                { data: { detail: "i am fine! wel" } },
             )
-
-
         )
         console.log(result)
     } catch (error) {
