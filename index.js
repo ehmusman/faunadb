@@ -31,24 +31,36 @@ require("dotenv").config();
             // inserting a document
             // q.Create(
             //     q.Collection('messages'),
-            //     { data: { detail: "I am fine, what's about you" } },
+            //     { data: { detail: "this is message 4" } },
             // )
 
             // insert multiple docs at a time
-            q.Map(
-                [
-                    'This is message one',
-                    'This is message 2',
-                    'This is message 3',
-                ],
-                q.Lambda(
-                    'detail',
-                    q.Create(
-                        q.Collection('messages'),
-                        { data: { title: q.Var('detail') } },
-                    )
-                ),
+            // q.Map(
+            //     [
+            //         'This is message one',
+            //         'This is message 2',
+            //         'This is message 3',
+            //     ],
+            //     q.Lambda(
+            //         'detail',
+            //         q.Create(
+            //             q.Collection('messages'),
+            //             { data: { title: q.Var('detail') } },
+            //         )
+            //     ),
+            // )
+
+
+            // retreive a single document by Ref
+            // q.Get(q.Ref(q.Collection('messages'), '300311228350202373'))
+
+
+            // retreive document by indexes
+            q.Get(
+                q.Match(q.Index('detail_by_title'), "this is message 4")
             )
+
+
         )
         console.log(result)
     } catch (error) {
