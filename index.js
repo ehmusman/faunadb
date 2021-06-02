@@ -21,11 +21,18 @@ require("dotenv").config();
             // q.CreateCollection({ name: 'messages' })
 
             // creating index
-            q.CreateIndex({
-                name: 'data_by_title',
-                source: q.Collection('messages'),
-                terms: [{ field: ['data', 'detail'] }],
-            })
+            // q.CreateIndex({
+            //     name: 'detail_by_title',
+            //     source: q.Collection('messages'),
+            //     terms: [{ field: ['data', 'detail'] }],
+            // })
+
+
+            // inserting a document
+            q.Create(
+                q.Collection('messages'),
+                { data: { detail: "I am fine, what's about you" } },
+            )
         )
         console.log(result)
     } catch (error) {
