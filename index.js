@@ -29,9 +29,25 @@ require("dotenv").config();
 
 
             // inserting a document
-            q.Create(
-                q.Collection('messages'),
-                { data: { detail: "I am fine, what's about you" } },
+            // q.Create(
+            //     q.Collection('messages'),
+            //     { data: { detail: "I am fine, what's about you" } },
+            // )
+
+            // insert multiple docs at a time
+            q.Map(
+                [
+                    'This is message one',
+                    'This is message 2',
+                    'This is message 3',
+                ],
+                q.Lambda(
+                    'detail',
+                    q.Create(
+                        q.Collection('messages'),
+                        { data: { title: q.Var('detail') } },
+                    )
+                ),
             )
         )
         console.log(result)
