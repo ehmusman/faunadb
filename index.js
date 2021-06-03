@@ -67,9 +67,14 @@ require("dotenv").config();
             // )
 
             // Replace a document
-            q.Replace(
-                q.Ref(q.Collection('messages'), '300310855113769473'),
-                { data: { detail: "i am fine! wel" } },
+            // q.Replace(
+            //     q.Ref(q.Collection('messages'), '300310855113769473'),
+            //     { data: { detail: "i am fine! wel" } },
+            // )
+
+            // delete a document
+            q.Delete(
+                q.Ref(q.Collection('messages'), '300311228350204421')
             )
         )
         console.log(result)
